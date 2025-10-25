@@ -1,0 +1,53 @@
+Create a modern, responsive, and visually stunning company website for "GenOrcasX", an IT and AI-based services and products company. The website should be built using HTML, CSS (preferably Tailwind or Bootstrap for rapid styling), and JavaScript (React.js or Next.js preferred for dynamic components).
+
+🔷 Core Pages and Features:
+
+1. **Home Page**
+   - Hero section with GenOrcasX branding, tagline, and call-to-action.
+   - Overview of services and AI capabilities.
+   - Testimonials or client logos (placeholder).
+
+2. **Tools Page** (Interactive AI Tools)
+   - **Tokenization Tool**: Input text → Output tokenized words.
+   - **Chunking Tool**: Input text + chunk size + overlap → Output chunks.
+   - **AI Assistant**: Input Groq API key → Chat interface powered by Groq.
+   - **RAG Tool**: Input Groq API key, OpenAI embed key, and file → Retrieval-Augmented Generation interface.
+   - **Evaluation Tool**: Input model responses → Output performance metrics (accuracy, relevance, etc.).
+   - **Embedding Tool**: Input text → Output embedded vector (display as JSON or chart).
+
+3. **Blogs Page**
+   - Categories: All, AI, MVP, Marketing, etc.
+   - Blog cards with featured images, tags, and preview text.
+   - Search and filter functionality.
+   - Clean, readable layout with dark/light mode toggle.
+
+4. **Our Team Page**
+   - Profile cards with photo, name, role, and short bio.
+   - Hover effects and animations for interactivity.
+
+5. **Contact Page**
+   - Form with name, email, message.
+   - Map embed (optional).
+   - Social media links.
+
+6. **Footer**
+   - Quick links, copyright, and newsletter signup.
+
+🎨 UI/UX Requirements:
+- Use best-in-class UI design principles: spacing, typography, color harmony.
+- Mobile-first responsive design.
+- Smooth transitions and animations.
+- Sticky navbar and scroll-to-top button.
+- Consistent branding across all pages.
+
+🛠️ Tech Stack Suggestions:
+- Frontend: React.js or Next.js
+- Styling: Tailwind CSS or Bootstrap
+- Backend (optional): Node.js with Express for API endpoints
+- AI Tool Integration: Use fetch/axios to call APIs with user-provided keys
+
+📦 Bonus:
+- Include a loading spinner for API calls.
+- Use modals or collapsible sections for tool outputs.
+- Add tooltips and helper text for user inputs.
+
