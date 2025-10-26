@@ -705,61 +705,40 @@ Please answer based on the provided context.`
 import express from "express";
 import fs2 from "fs";
 import path2 from "path";
-import { fileURLToPath as fileURLToPath2 } from "url";
+import { fileURLToPath } from "url";
 import { createServer as createViteServer, createLogger } from "vite";
 
 // vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { fileURLToPath } from "url";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
-var __dirname = path.dirname(fileURLToPath(import.meta.url));
 var vite_config_default = defineConfig({
   base: "/",
-  // ✅ root-relative paths for Vercel
-  plugins: [
-    react(),
-    runtimeErrorOverlay(),
-    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
-      await import("@replit/vite-plugin-cartographer").then(
-        (m) => m.cartographer()
-      ),
-      await import("@replit/vite-plugin-dev-banner").then(
-        (m) => m.devBanner()
-      )
-    ] : []
-  ],
+  // absolute paths for root domain deployment
+  root: path.resolve(__dirname, "client"),
+  // source code folder
+  plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"),
+      "@": path.resolve(__dirname, "client/src"),
       "@shared": path.resolve(__dirname, "shared"),
       "@assets": path.resolve(__dirname, "attached_assets")
     }
   },
-  root: path.resolve(__dirname, "client"),
   build: {
-    outDir: "dist",
-    // ✅ builds into top-level dist/ folder
+    outDir: path.resolve(__dirname, "dist"),
+    // ✅ top-level dist for Vercel
     emptyOutDir: true,
-    chunkSizeWarningLimit: 1500,
-    rollupOptions: {
-      output: {
-        manualChunks: void 0
-      }
-    }
+    rollupOptions: { output: { manualChunks: void 0 } }
   },
   server: {
-    fs: {
-      strict: true
-    }
-  },
-  assetsInclude: ["**/*.md"]
+    fs: { strict: true }
+  }
 });
 
 // server/vite.ts
 import { nanoid } from "nanoid";
-var __dirname2 = path2.dirname(fileURLToPath2(import.meta.url));
+var __dirname2 = path2.dirname(fileURLToPath(import.meta.url));
 var viteLogger = createLogger();
 function log(message, source = "express") {
   const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
