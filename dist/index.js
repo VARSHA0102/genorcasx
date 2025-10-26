@@ -716,19 +716,11 @@ import { fileURLToPath } from "url";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 var __dirname = path.dirname(fileURLToPath(import.meta.url));
 var vite_config_default = defineConfig({
-  base: "",
-  // ✅ root-relative paths
+  base: "./",
+  // 👈 change to '/genorcasx/' if GitHub Pages
   plugins: [
     react(),
-    runtimeErrorOverlay(),
-    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
-      await import("@replit/vite-plugin-cartographer").then(
-        (m) => m.cartographer()
-      ),
-      await import("@replit/vite-plugin-dev-banner").then(
-        (m) => m.devBanner()
-      )
-    ] : []
+    runtimeErrorOverlay()
   ],
   resolve: {
     alias: {
@@ -740,21 +732,12 @@ var vite_config_default = defineConfig({
   root: path.resolve(__dirname, "client"),
   build: {
     outDir: "../dist",
-    // ✅ must be relative to root
     emptyOutDir: true,
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
-      output: {
-        manualChunks: void 0
-      }
+      output: { manualChunks: void 0 }
     }
-  },
-  server: {
-    fs: {
-      strict: true
-    }
-  },
-  assetsInclude: ["**/*.md"]
+  }
 });
 
 // server/vite.ts
