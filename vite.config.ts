@@ -34,6 +34,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist"), // ✅ Vercel expects this folder
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1500, 
+    rollupOptions: {
+      output: {
+        manualChunks: undefined // disables chunk splitting suggestions
+      }
+    }
   },
   server: {
     fs: {

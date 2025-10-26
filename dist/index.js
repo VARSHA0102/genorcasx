@@ -741,7 +741,14 @@ var vite_config_default = defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist"),
     // ✅ Vercel expects this folder
-    emptyOutDir: true
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      output: {
+        manualChunks: void 0
+        // disables chunk splitting suggestions
+      }
+    }
   },
   server: {
     fs: {
