@@ -7,7 +7,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  base: '/', // ✅ Ensures correct asset paths on Vercel
+  base: '', // ✅ Correct for root domain deployment (www.genorcasx.com)
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -32,14 +32,14 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist"), // ✅ Vercel expects this folder
+    outDir: "../dist", // ✅ Outputs to top-level dist/ folder for Vercel
     emptyOutDir: true,
-    chunkSizeWarningLimit: 1500, 
+    chunkSizeWarningLimit: 1500,
     rollupOptions: {
       output: {
-        manualChunks: undefined // disables chunk splitting suggestions
-      }
-    }
+        manualChunks: undefined, // ✅ Silences chunk splitting warnings
+      },
+    },
   },
   server: {
     fs: {
