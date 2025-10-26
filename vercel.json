@@ -5,7 +5,7 @@
       "src": "client/index.html",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "../dist"
       }
     },
     {
@@ -14,23 +14,12 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "server/index.ts"
-    },
+    { "src": "/api/(.*)", "dest": "server/index.ts" },
     {
       "src": "/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": "text/html"
-        }
-      ],
+      "has": [{ "type": "header", "key": "accept", "value": "text/html" }],
       "dest": "/index.html"
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "env": { "NODE_ENV": "production" }
 }
