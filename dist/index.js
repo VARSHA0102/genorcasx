@@ -717,7 +717,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 var __dirname = path.dirname(fileURLToPath(import.meta.url));
 var vite_config_default = defineConfig({
   base: "",
-  // ✅ Correct for root domain deployment (www.genorcasx.com)
+  // ✅ root-relative paths
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -740,13 +740,12 @@ var vite_config_default = defineConfig({
   root: path.resolve(__dirname, "client"),
   build: {
     outDir: "../dist",
-    // ✅ Outputs to top-level dist/ folder for Vercel
+    // ✅ must be relative to root
     emptyOutDir: true,
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
       output: {
         manualChunks: void 0
-        // ✅ Silences chunk splitting warnings
       }
     }
   },
