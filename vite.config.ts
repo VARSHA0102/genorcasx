@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  base: '/', // absolute paths for root domain deployment
-  root: path.resolve(__dirname, 'client'), // source code folder
+  root: path.resolve(__dirname, "client"),
+  base: "/",                // absolute paths
   plugins: [react()],
   resolve: {
     alias: {
@@ -14,11 +14,8 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(__dirname, 'dist'), // ✅ top-level dist for Vercel
+    outDir: path.resolve(__dirname, "dist"),  // top-level dist
     emptyOutDir: true,
-    rollupOptions: { output: { manualChunks: undefined } },
-  },
-  server: {
-    fs: { strict: true },
+    assetsDir: "assets",  // ✅ ensures JS/CSS are in /assets/
   },
 });

@@ -713,10 +713,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 var vite_config_default = defineConfig({
-  base: "/",
-  // absolute paths for root domain deployment
   root: path.resolve(__dirname, "client"),
-  // source code folder
+  base: "/",
+  // absolute paths
   plugins: [react()],
   resolve: {
     alias: {
@@ -727,12 +726,10 @@ var vite_config_default = defineConfig({
   },
   build: {
     outDir: path.resolve(__dirname, "dist"),
-    // ✅ top-level dist for Vercel
+    // top-level dist
     emptyOutDir: true,
-    rollupOptions: { output: { manualChunks: void 0 } }
-  },
-  server: {
-    fs: { strict: true }
+    assetsDir: "assets"
+    // ✅ ensures JS/CSS are in /assets/
   }
 });
 
