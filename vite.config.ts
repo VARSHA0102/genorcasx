@@ -7,7 +7,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  base: './', // ✅ root-relative paths
+  base: '', // ✅ root-relative paths
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -32,7 +32,7 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: "dist", // ✅ must be relative to root
+    outDir: "../dist", // ✅ must be relative to root
     emptyOutDir: true,
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
