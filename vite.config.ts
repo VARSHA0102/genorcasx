@@ -7,7 +7,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  base: '/',
+  base: '/', // ✅ Ensures correct asset paths on Vercel
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -15,10 +15,10 @@ export default defineConfig({
     process.env.REPL_ID !== undefined
       ? [
           await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
+            m.cartographer()
           ),
           await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
+            m.devBanner()
           ),
         ]
       : []),
@@ -32,7 +32,7 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist"), // ✅ Vercel expects this folder
     emptyOutDir: true,
   },
   server: {
@@ -40,5 +40,5 @@ export default defineConfig({
       strict: true,
     },
   },
-  assetsInclude: ['**/*.md'], // ✅ Added to treat .md files as static assets
+  assetsInclude: ['**/*.md'],
 });
