@@ -32,7 +32,7 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: "../dist", // ✅ builds into top-level dist/ folder
+    outDir: "dist", // ✅ builds into top-level dist/ folder
     emptyOutDir: true,
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
