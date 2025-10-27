@@ -705,13 +705,16 @@ Please answer based on the provided context.`
 import express from "express";
 import fs2 from "fs";
 import path2 from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath as fileURLToPath2 } from "url";
 import { createServer as createViteServer, createLogger } from "vite";
 
 // vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { fileURLToPath } from "url";
+var __filename = fileURLToPath(import.meta.url);
+var __dirname = path.dirname(__filename);
 var vite_config_default = defineConfig({
   root: path.resolve(__dirname, "client"),
   base: "/",
@@ -735,7 +738,7 @@ var vite_config_default = defineConfig({
 
 // server/vite.ts
 import { nanoid } from "nanoid";
-var __dirname2 = path2.dirname(fileURLToPath(import.meta.url));
+var __dirname2 = path2.dirname(fileURLToPath2(import.meta.url));
 var viteLogger = createLogger();
 function log(message, source = "express") {
   const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {

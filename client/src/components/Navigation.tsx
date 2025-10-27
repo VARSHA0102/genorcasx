@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
 import genImage from '@assets/generated_images/genName.png';
+import logo from '@assets/generated_images/logo_genox.png';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,7 @@ export default function Navigation() {
             }}
           >
             <img 
-              src="https://www.genorcasx.com/assets/logo-BtNA-zwc.png" 
+              src={logo}
               alt="GenOrcasX" 
               className="h-8 w-auto"
             />

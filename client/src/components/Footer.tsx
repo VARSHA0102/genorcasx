@@ -5,6 +5,8 @@ import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import genImage from '@assets/generated_images/genName.png';
+import logo from '@assets/generated_images/logo_genox.png';
+
 export default function Footer() {
   const [email, setEmail] = useState('');
   const { toast } = useToast();
@@ -91,7 +93,7 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center space-x-2 group">
               <img 
-                src="https://www.GenOrcasX.com/assets/logo-BtNA-zwc.png" 
+                src={logo} 
                 alt="GenOrcasX logo" 
                 className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
               />
