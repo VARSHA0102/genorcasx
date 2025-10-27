@@ -6,20 +6,11 @@
   ],
   "routes": [
     { "handle": "filesystem" },
+    { "src": "^/assets/(.*)$", "dest": "/assets/$1" },
     { "src": "^/api/(.*)$", "dest": "/server/index.ts" },
     { "src": "^/(.*)$", "dest": "/index.html" }
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "curl": {
-    "request": {
-      "method": "GET",
-      "url": "https://www.genorcasx.com/assets/index-BF4pcpiq.js",
-      "headers": {
-        "Accept": "application/json",
-        "User-Agent": "curl/7.64.1"
-      }
-    }
   }
 }
