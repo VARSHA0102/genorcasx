@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 app.use(express.json());
@@ -53,7 +55,18 @@ app.use((req, res, next) => {
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
-    serveStatic(app);
+    // production: serve built assets from dist and only then fallback to index.html
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const clientDist = path.resolve(__dirname, "../dist");
+
+    // serve static assets first (express sets correct Content-Type)
+    app.use(express.static(clientDist, { maxAge: "1y", index: false }));
+
+    // SPA fallback AFTER static middleware
+    app.get("*", (_req, res) => {
+      res.sendFile(path.join(clientDist, "index.html"));
+    });
   }
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
